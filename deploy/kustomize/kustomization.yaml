@@ -4,7 +4,7 @@ resources:
   - ./v-rising.yaml
   # - ./v-rising-config.yaml
 
-configMapGenerator:
-- name: vrising-settings
-  files:
-  - v-rising-settings.json
+# configMapGenerator:
+# - name: vrising-settings
+#   files:
+#   - v-rising-settings.json
