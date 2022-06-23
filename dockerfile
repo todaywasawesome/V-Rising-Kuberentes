@@ -1,12 +1,12 @@
 FROM fragsoc/steamcmd-wine-xvfb
 
-COPY root /
+RUN steamcmd +force_install_dir /home/VRisingServer +login anonymous +app_update 1829350 validate +quit
 
-WORKDIR /scripts
+WORKDIR /home/VRisingServer/
 
 RUN chmod +x ./run.sh
 
 EXPOSE 27015/udp
 EXPOSE 27016/udp
 
-ENTRYPOINT ./run.sh
+ENTRYPOINT Xvfb :0 -screen 0 1024x768x16 & DISPLAY=:0.0 wine VRisingServer.exe -persistentDataPath Z:/data
