@@ -4,8 +4,6 @@ RUN steamcmd +force_install_dir /home/VRisingServer +login anonymous +app_update
 
 WORKDIR /home/VRisingServer/
 
-RUN chmod +x ./run.sh
-
 EXPOSE 27015/udp
 EXPOSE 27016/udp
 
