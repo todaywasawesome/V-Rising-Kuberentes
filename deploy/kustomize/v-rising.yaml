@@ -53,11 +53,16 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: vrising-claim0
+            - mountPath: /data/Settings
+              name: vrising-config
       restartPolicy: Always
       volumes:
         - name: vrising-claim0
           persistentVolumeClaim:
             claimName: vrising-claim0
+        - name: vrising-config
+          configMap:
+            name: v-rising-config
 status: {}
 ---
 apiVersion: v1
