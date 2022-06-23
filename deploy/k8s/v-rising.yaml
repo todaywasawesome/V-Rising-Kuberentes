@@ -1,0 +1,86 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: vrising-claim0
+  name: vrising-claim0
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+  #storageClassName: longhorn
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.1 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: vrising
+  name: vrising
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: vrising
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.26.1 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: vrising
+    spec:
+      containers:
+        - image: todaywasawesome/v-rising-kuberentes:k8s
+          name: vrising-server
+          ports:
+            - containerPort: 27015
+              protocol: UDP
+            - containerPort: 27016
+              protocol: UDP
+          resources: {}
+          tty: true
+          volumeMounts:
+            - mountPath: /data
+              name: vrising-claim0
+      restartPolicy: Always
+      volumes:
+        - name: vrising-claim0
+          persistentVolumeClaim:
+            claimName: vrising-claim0
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.1 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: vrising
+  name: vrising
+spec:
+  ports:
+    - name: "27015"
+      port: 27015
+      protocol: UDP
+      targetPort: 27015
+    - name: "27016"
+      port: 27016
+      protocol: UDP
+      targetPort: 27016
+  selector:
+    io.kompose.service: vrising
+status:
+  loadBalancer: {}
