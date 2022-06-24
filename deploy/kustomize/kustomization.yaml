@@ -5,6 +5,9 @@ resources:
   # - ./v-rising-config.yaml
 
 # configMapGenerator:
-# - name: vrising-settings
+# - name: vrising-ServerHostSettings
 #   files:
-#   - v-rising-settings.json
+#   - ServerHostSettings.json
+# - name: vrising-ServerGameSettings
+#   files:
+#   - ServerGameSettings.json

@@ -54,15 +54,20 @@ spec:
             - mountPath: /data
               name: vrising-claim0
             - mountPath: /data/Settings
-              name: vrising-config
+              name: vrising-ServerHostSettings
+            - mountPath: /data/Settings
+              name: vrising-ServerGameSettings
       restartPolicy: Always
       volumes:
         - name: vrising-claim0
           persistentVolumeClaim:
             claimName: vrising-claim0
-        - name: vrising-config
+        - name: vrising-ServerHostSettings
           configMap:
-            name: v-rising-config
+            name: vrising-ServerHostSettings
+        - name: vrising-ServerGameSettings
+          configMap:
+            name: vrising-ServerGameSettings
 status: {}
 ---
 apiVersion: v1
