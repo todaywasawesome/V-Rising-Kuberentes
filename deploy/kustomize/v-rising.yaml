@@ -51,13 +51,13 @@ spec:
           resources: {}
           tty: true
           volumeMounts:
-            - mountPath: /data
-              name: vrising-claim0
-            - mountPath: /data/Settings
-              name: vrising-serverhostsettings
+            - name: vrising-claim0
+              mountPath: /data
+            - name: vrising-serverhostsettings
+              mountPath: /data/Settings
               subPath: ServerHostSettings.json
-            - mountPath: /data/Settings
-              name: vrising-servergamesettings
+            - name: vrising-servergamesettings
+              mountPath: /data/Settings
               subPath: ServerGameSettings.json
       restartPolicy: Always
       volumes:
