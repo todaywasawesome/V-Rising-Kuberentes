@@ -55,8 +55,10 @@ spec:
               name: vrising-claim0
             - mountPath: /data/Settings
               name: vrising-serverhostsettings
+              subPath: ServerHostSettings.json
             - mountPath: /data/Settings
               name: vrising-servergamesettings
+              subPath: ServerGameSettings.json
       restartPolicy: Always
       volumes:
         - name: vrising-claim0
