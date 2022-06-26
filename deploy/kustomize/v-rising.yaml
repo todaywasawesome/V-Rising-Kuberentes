@@ -63,7 +63,7 @@ spec:
       volumes:
         - name: vrising-claim0
           persistentVolumeClaim:
-            claimName: vrising-claim
+            claimName: vrising
         - name: vrising-serverhostsettings
           configMap:
             name: vrising-serverhostsettings
