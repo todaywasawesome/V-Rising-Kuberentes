@@ -1,19 +1,19 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  creationTimestamp: null
-  labels:
-    io.kompose.service: vrising-claim0
-  name: vrising-claim0
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 100Mi
-  #storageClassName: longhorn
-status: {}
----
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   creationTimestamp: null
+#   labels:
+#     io.kompose.service: vrising-claim0
+#   name: vrising-claim0
+# spec:
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 100Mi
+#   #storageClassName: longhorn
+# status: {}
+# ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -63,7 +63,7 @@ spec:
       volumes:
         - name: vrising-claim0
           persistentVolumeClaim:
-            claimName: vrising-claim0
+            claimName: vrising-claim
         - name: vrising-serverhostsettings
           configMap:
             name: vrising-serverhostsettings
